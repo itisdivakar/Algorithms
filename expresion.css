@@ -1,0 +1,51 @@
+.container {
+    width: 300px;
+}
+
+.first,
+.second,
+.third,
+.fourth,
+.fifth {
+    height: 100px;
+    width: 100px;
+    /* border: solid black; */
+}
+
+.first {
+    background-color: blue;
+}
+
+.second {
+    background-color: green;
+}
+
+.third {
+    background-color: yellow;
+}
+
+.fourth {
+    background-color: purple;
+}
+
+.fifth {
+    background-color: red;
+}
+
+.first_parent,
+.second_parent,
+.third_parent,
+.fourth_parent,
+.fifth_parent {
+    display: flex;
+    /* border: solid black; */
+}
+
+.third_parent {
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.fourth_parent {
+    justify-content: end;
+}
