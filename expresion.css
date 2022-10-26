@@ -1,5 +1,5 @@
 .container {
-    width: 300px;
+    width: 290px;
 }
 
 .first,
@@ -7,8 +7,8 @@
 .third,
 .fourth,
 .fifth {
-    height: 100px;
-    width: 100px;
+    height: 101px;
+    width: 101px;
     /* border: solid black; */
 }
 
