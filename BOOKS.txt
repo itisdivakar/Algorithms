@@ -1,0 +1,125 @@
+import java.util.*;
+class publications{
+    Scanner sc = new Scanner(System.in);
+    String title;
+    int price;
+    int copies;
+    int totalSale=0;
+    void saleCopy(int q,int price)
+    {
+        totalSale+=(q*price);
+    }
+    void initialbooks(book b)
+    {
+        System.out.println("enter initial number of books:");
+        b.copies=sc.nextInt();
+        System.out.println("enter name of the author :");
+        b.author=sc.next();
+        System.out.println("enter the price of the books :");
+        b.price=sc.nextInt();
+    }
+    void initialmagazines(magazine m)
+    {
+        System.out.println("enter initial number of magzine");
+        m.copies=sc.nextInt();
+        System.out.println("enter title of magzine :");
+        m.title=sc.next();
+        System.out.println("enter the price of the magzine: ");
+        m.price=sc.nextInt();
+    }
+
+
+}
+
+class book extends publications
+{
+    String author;
+    int order;
+    int totalSale = 0;
+    void saleCopy(int q,int price)
+    {
+        totalSale+=(q*price);
+    }
+}
+class magazine extends publications
+{
+    int orderQty;
+    int totalSale=0;
+    void receiveIssue(int q)
+    {
+        copies+=q;
+    }
+    void saleCopy(int q,int price)
+    {
+        totalSale+=(q*price);
+    }
+}
+
+public class Publication_sales {
+    public static void main (String[]args){
+        Scanner sc = new Scanner(System.in);
+        publications p = new publications();
+        book b = new book();
+        b.initialbooks(b);
+        magazine m = new magazine();
+        m.initialmagazines(m);
+        int z = 1;
+        while (z == 1) {
+            System.out.println("1.order book");
+            System.out.println("2.order magazine");
+            System.out.println("3.recive magzine ");
+            System.out.println("4.total book sale ");
+            System.out.println("5. total magzine sale");
+            System.out.println("6. total publication sale");
+            System.out.println("ENTER CHOICE: ");
+            int choice = sc.nextInt();
+            switch (choice) {
+                case 1:
+                    System.out.println("enter order quantity :");
+                    b.order = sc.nextInt();
+                    if (b.copies < b.order) {
+                        System.out.println("insufficient stock");
+                    } else {
+                        b.saleCopy(b.order, b.price);
+                        p.saleCopy(b.order, b.price);
+                        b.copies -= b.order;
+                        System.out.println("order placed!!");
+                    }
+                    System.out.println("total copies available :" + b.copies);
+                    break;
+                case 2:
+                    System.out.println("enter order quantity :");
+                    m.orderQty = sc.nextInt();
+                    if (m.orderQty > m.copies) {
+                        System.out.println("insufficient stock ");
+                    } else {
+                        m.saleCopy(m.orderQty, m.price);
+                        p.saleCopy(m.orderQty, m.price);
+                        m.copies -= m.orderQty;
+                    }
+                    System.out.println("total available copies :" + m.copies);
+                    break;
+                case 3:
+                    System.out.println("enter recieve quantity :");
+                    m.copies += sc.nextInt();
+                    System.out.println("copies available :" + m.copies);
+                    break;
+                case 4:
+                    System.out.println("total book sale :" + b.totalSale);
+                    break;
+                case 5:
+                    System.out.println("total sale of magzine :" + m.totalSale);
+                    break;
+                case 6:
+                    System.out.println("total publication sale : " + p.totalSale);
+                    break;
+            }
+            System.out.println("do you want continue: 1/0 ");
+            z = sc.nextInt();
+            if (z == 0) {
+                System.out.println("THANK YOU");
+                break;
+            }
+        }
+    }
+}

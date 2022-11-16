@@ -1,0 +1,304 @@
+import java.util.*;
+
+
+interface vehicle
+{
+    void ShowData() ;
+    void changeGear() ;
+    void changeSpeed() ;
+    void applyBrakes() ;
+}
+//============================================================================================================================
+class bicycle implements vehicle
+{
+    int speed=0,gear=0;
+    Scanner sc = new Scanner(System.in);
+
+    public void ShowData()
+    {
+        System.out.println("Speed of the bicycle: " + speed) ;
+        System.out.println("Gear of the bicycle: " + gear) ;
+    }
+    public void changeGear()
+    {
+        System.out.println("gear up: press 1") ;
+        System.out.println("gear down: press 2") ;
+        int c;
+        c=sc.nextInt();
+        if(c==1) {
+            gear=gear+1;
+            speed=speed+20;
+        }
+        else if(c==2) {
+            if(gear==0) System.out.println("current gear is already 0") ;
+            else {
+                gear=gear-1;
+                speed=speed+20;
+            }
+        }
+        else{
+            System.out.println("Invalid input");
+        }
+
+    }
+    public void changeSpeed()
+    {
+        System.out.println("speed up: press 1") ;
+        System.out.println("speed down: press 2") ;
+        int c;
+        c=sc.nextInt();
+        if(c==1) {
+            gear=gear+1;
+            speed=speed+20;
+        }
+        if(c==2) {
+            if(speed==0) System.out.println("current speed is already 0") ;
+            else {
+                gear=gear-1;
+                speed=speed+20;
+            }
+        }
+    }
+    public void applyBrakes()
+    {
+        if(speed==0) System.out.println("current speed is already 0");
+        else {
+            gear=gear-1;
+            speed=speed-20;
+        }
+
+
+    }
+}
+//============================================================================================================================
+class car implements vehicle
+{
+    int speed=0,gear=0;
+    Scanner sc = new Scanner(System.in);
+
+    public void ShowData()
+    {
+        System.out.println("Speed of the car: " + speed) ;
+        System.out.println("Gear of the car: " + gear) ;
+    }
+    public void changeGear()
+    {
+        System.out.println("gear up: press 1") ;
+        System.out.println("gear down: press 2") ;
+        int c;
+        c=sc.nextInt();
+        if(c==1) {
+            gear=gear+1;
+            speed=speed+20;
+        }
+        else if(c==2) {
+            if(gear==0) System.out.println("current gear is already 0") ;
+            else {
+                gear=gear-1;
+                speed=speed+20;
+            }
+        }
+        else{
+            System.out.println("Invalid input");
+        }
+
+    }
+    public void changeSpeed()
+    {
+        System.out.println("speed up: press 1") ;
+        System.out.println("speed down: press 2") ;
+        int c;
+        c=sc.nextInt();
+        if(c==1) {
+            gear=gear+1;
+            speed=speed+20;
+        }
+        if(c==2) {
+            if(speed==0) System.out.println("current speed is already 0") ;
+            else {
+                gear=gear-1;
+                speed=speed+20;
+            }
+        }
+    }
+    public void applyBrakes()
+    {
+        if(speed==0) System.out.println("current speed is already 0");
+        else {
+            gear=gear-1;
+            speed=speed-20;
+        }
+    }
+}
+//============================================================================================================================
+class bike implements vehicle
+{
+    int speed=0,gear=0;
+    Scanner sc = new Scanner(System.in);
+
+    public void ShowData()
+    {
+        System.out.println("Speed of the bike: " + speed) ;
+        System.out.println("Gear of the bike: " + gear) ;
+    }
+    public void changeGear()
+    {
+        System.out.println("gear up: press 1") ;
+        System.out.println("gear down: press 2") ;
+        int c;
+        c=sc.nextInt();
+        if(c==1) {
+            gear=gear+1;
+            speed=speed+20;
+        }
+        else if(c==2) {
+            if(gear==0) System.out.println("current gear is already 0") ;
+            else {
+                gear=gear-1;
+                speed=speed+20;
+            }
+        }
+        else{
+            System.out.println("Invalid input");
+        }
+
+
+
+    }
+    public void changeSpeed()
+    {
+        System.out.println("speed up: press 1") ;
+        System.out.println("speed down: press 2") ;
+        int c;
+        c=sc.nextInt();
+        if(c==1) {
+            gear=gear+1;
+            speed=speed+20;
+        }
+        if(c==2) {
+            if(speed==0) System.out.println("current speed is already 0") ;
+            else {
+                gear=gear-1;
+                speed=speed+20;
+            }
+        }
+    }
+    public void applyBrakes()
+    {
+        if(speed==0) System.out.println("current speed is already 0");
+        else {
+            gear=gear-1;
+            speed=speed-20;
+        }
+    }
+}
+
+//============================================================================================================================
+public class Main {
+
+    public static void main(String[] args) {
+        bicycle bi = new bicycle() ;
+        bike bk = new bike() ;
+        car ca = new car() ;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter your choice:\n 1. bicycle\n 2. car \n 3. bike \n 4. Exit\n");
+        int c;
+        c=sc.nextInt();
+        while(c!=4) {
+            switch(c)
+            {
+                case 1:
+                    System.out.print("Enter your choice:\n 1. change gear\n 2. change speed \n 3. apply brakes \n 4. show data \n 5. exit   \n");
+
+                    int c2;
+                    c2=sc.nextInt();
+                    while(c2!=5) {
+                        switch(c2) {
+                            case 1:
+                                bi.changeGear();
+                                break;
+                            case 2:
+                                bi.changeSpeed();
+                                break;
+                            case 3:
+                                bi.applyBrakes();
+                                break;
+                            case 4:
+                                bi.ShowData();
+                                break;
+                            default:
+                                System.out.println("Invalid entry");
+                                break;
+                        }
+
+                        System.out.print("Enter your choice:\n 1. change gear\n 2. change speed \n 3. apply brakes \n 4. show data \n 5. exit   \n");
+                        c2=sc.nextInt();
+                    }
+                    break;
+                case 2:
+                    System.out.print("Enter your choice:\n 1. change gear\n 2. change speed \n 3. apply brakes \n 4. show data \n 5. exit   \n");
+                    int c3;
+                    c3=sc.nextInt();
+                    while(c3!=5) {
+                        switch(c3) {
+                            case 1:
+                                ca.changeGear();
+                                break;
+                            case 2:
+                                ca.changeSpeed();
+                                break;
+                            case 3:
+                                ca.applyBrakes();
+                                break;
+                            case 4:
+                                ca.ShowData();
+                                break;
+                            default:
+                                System.out.println("Invalid entry");
+                                break;
+                        }
+                        System.out.print("Enter your choice:\n 1. change gear\n 2. change speed \n 3. apply brakes \n 4. show data \n 5. exit   \n");
+                        c3=sc.nextInt();
+                    }
+                    break;
+                case 3:
+                    System.out.print("Enter your choice:\n 1. change gear\n 2. change speed \n 3. apply brakes \n 4. show data \n 5. exit   \n");
+                    int c4;
+                    c4=sc.nextInt();
+                    while(c4!=5) {
+                        switch(c4) {
+                            case 1:
+                                bk.changeGear();
+                                break;
+                            case 2:
+                                bk.changeSpeed();
+                                break;
+                            case 3:
+                                bk.applyBrakes();
+                                break;
+                            case 4:
+                                bk.ShowData();
+                                break;
+                            default:
+                                System.out.println("Invalid entry");
+                                break;
+                        }
+                        System.out.print("Enter your choice:\n 1. change gear\n 2. change speed \n 3. apply brakes \n 4. show data \n 5. exit   \n");
+                        c4=sc.nextInt();
+                    }
+
+                    break;
+
+                default:
+                    System.out.println("Invalid entry");
+                    break;
+            }
+            System.out.print("Enter your choice:\n 1. bicycle\n 2. car \n 3. bike \n 4. Exit\n");
+            c=sc.nextInt();
+        }
+
+
+    }
+
+}

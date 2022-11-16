@@ -1,0 +1,163 @@
+import java.util.*;
+
+class Employee {
+    Scanner sc = new Scanner(System.in);
+    String empName;
+    int empId;
+    String address;
+    String mail;
+    String mobile;
+
+    public
+    void getdata()
+    {
+        System.out.println("Enter employee name: ");
+        empName=sc.nextLine();
+        System.out.println("Enter employee id: ");
+        empId=sc.nextInt();
+        System.out.println("Enter employee address: ");
+        address=sc.next();
+        System.out.println("Enter employee mail id: ");
+        mail=sc.next();
+        while(!mail.contains("@") || !mail.contains(".")) {
+            System.out.println("WRONG e-MAIL ID\n");
+            System.out.println("ENTER CORRECTLY: \n");
+            mail=sc.next();
+        }
+        System.out.println("Enter employee mobile no: ");
+        mobile=sc.next();
+        while(mobile.length()!=10) {
+            System.out.println("YOU ARE ENTERING WRONG PHONE NO\n");
+            System.out.println("ENTER CORRECTLY: \n");
+            mobile=sc.next();
+        }
+    }
+
+    void generatePaySlip(double gross,double net, int bp)
+    {
+        System.out.println("PAY SLIP: ");
+        System.out.println("Employee Name: "+empName+"\n");
+        System.out.println("Employee Id: "+empId+"\n");
+
+        System.out.println("da: "+ 0.97*bp +"\n");
+        System.out.println("hra: "+ 0.1*bp +"\n");
+        System.out.println("pf: "+ 0.12*bp +"\n");
+        System.out.println("scf: "+ 0.001*bp +"\n");
+
+        System.out.println("Gross Salary: "+gross+"\n");
+        System.out.println("Net Salary: "+net+"\n");
+    }
+    void Calculate(int bp)
+
+    {
+        double da=(0.97*bp);
+        double hra = 0.1*bp;
+        double pf=(0.12*bp);
+        double scf = (0.001*bp);
+        double gross=bp+da+hra+pf;
+        double net=gross-pf-scf;
+        generatePaySlip(gross,net,bp);
+    }
+    void menu()
+    {
+        System.out.println("1. Programmer\n2. Team Lead\n3. Asst. Project Manager\n4. Project Manager\nEnter 0 to exit");
+        System.out.println("ENTER THE CHOICE: ");
+    }
+
+}
+
+
+//==================================================================================================================================================
+class Programmer extends Employee
+{
+    Scanner sc = new Scanner(System.in);
+    int bp=0;
+    void getProgrammer()
+    {
+        System.out.println("Enter basic pay of programmer: ");
+        bp=sc.nextInt();
+        Calculate(bp);
+    }
+}
+
+class teamLead extends Employee
+{
+    Scanner sc = new Scanner(System.in);
+    int bp=0;
+    void getTeamLead()
+    {
+        System.out.println("Enter basic pay of teamlead: ");
+        bp=sc.nextInt();
+        Calculate(bp);
+    }
+}
+
+class assProjectManager extends Employee
+{
+    Scanner sc = new Scanner(System.in);
+    int bp=0;
+    void getAssProjectManager()
+    {
+        System.out.println("Enter basic pay of Assistant Project Manager: ");
+        bp=sc.nextInt();
+        Calculate(bp);
+    }
+}
+
+class projectManager extends Employee
+{
+    Scanner sc = new Scanner(System.in);
+    int bp=0;
+    void getProjectManager()
+    {
+        System.out.println("Enter basic pay of Project Manager: ");
+        bp=sc.nextInt();
+        Calculate(bp);
+    }
+}
+public class Main{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        Employee s = new Employee();
+        s.menu();
+        int f;
+        f=sc.nextInt();
+        while(f!=0) {
+            switch(f)
+            {
+                case 0:
+                    System.out.println("Thank you !!!");
+                    sc.close();
+                    break;
+                case 1:
+                    Programmer p = new Programmer();
+                    p.getdata();
+                    p.getProgrammer();
+                    break;
+                case 2:
+                    teamLead t = new teamLead();
+                    t.getdata();
+                    t.getTeamLead();
+                    break;
+                case 3:
+                    assProjectManager a = new assProjectManager();
+                    a.getdata();
+                    a.getAssProjectManager();
+                    break;
+                case 4:
+                    projectManager m = new projectManager();
+                    m.getdata();
+                    m.getProjectManager();
+                    break;
+                default:
+                    System.out.println("INVALID INPUT");
+                    break;
+            }
+            s.menu();
+            f=sc.nextInt();
+        }
+    }
+}
+
+
